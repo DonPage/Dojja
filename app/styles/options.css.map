@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";;;;;;;;;;;;AAUA,IAAI;EACF,UAAU,ECDM,OAAO;EDEvB,KAAK,ECLS,OAAO",
+"sources": ["options.scss","_vars.scss"],
+"names": [],
+"file": "options.css"
+}

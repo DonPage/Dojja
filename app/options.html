@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css styles/main.css -->
+        <link href="styles/options.css" rel="stylesheet">
+        <!-- endbuild -->
+    </head>
+    <body ng-app="dojjaOptionsApp" ng-csp>
+    <div ng-controller="optionsController">
+      <!--<h1> don!!!! {{ message }}</h1>-->
+      <!--<h3>{{ data.test }}</h3> yes! {{ data.number }}-->
+      <!--<p>{{ testInput }}<input type="text" ng-model="testInput"/></p>-->
+    </div>
+
+                
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/firebase/firebase.js"></script>
+        <script src="bower_components/angularfire/dist/angularfire.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js scripts/options.js -->
+        <script src="scripts/options.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>

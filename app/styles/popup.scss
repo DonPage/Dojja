@@ -1,0 +1,22 @@
+/* 
+   *   CSS using SCSS
+     * Created By: Don Page on 4/1/15
+   *   @DonRPage
+ *      
+*/
+
+
+@import '_vars.scss';
+
+body{
+  background: $bg-primary-dark;
+  height: 500px;
+  width: 300px;
+  overflow-y:auto;
+}
+
+ 
+
+
+ 
+ 
