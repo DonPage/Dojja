@@ -6,12 +6,191 @@
 */
 /* 
    *   CSS using SCSS
+     * Created By: Don Page on 4/7/15
+   *   @DonRPage
+ *      
+*/
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+/* 
+   *   CSS using SCSS
      * Created By: Don Page on 4/1/15
    *   @DonRPage
  *      
 */
+*,
+*:before,
+*:after {
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.clearfix {
+  zoom: 1; }
+
+.clearfix:before,
+.clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden; }
+
+.hidden {
+  display: none;
+  visibility: hidden; }
+
+/*  ====================================================================
+    Headings
+    ==================================================================== */
+/* Spacing
+------------------------------------*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0; }
+
+/* Sizes
+------------------------------------*/
+h1 {
+  font-size: 32px;
+  font-size: 3.2rem; }
+
+h2 {
+  font-size: 28px;
+  font-size: 2.8rem; }
+
+h3 {
+  font-size: 24px;
+  font-size: 2.4rem; }
+
+h4 {
+  font-size: 21px;
+  font-size: 2.1rem; }
+
+h5 {
+  font-size: 18px;
+  font-size: 1.8rem; }
+
+h6 {
+  font-size: 16px;
+  font-size: 1.6rem; }
+
+/* ==========================================================================
+   Form
+   ========================================================================== */
+form {
+  width: 100%; }
+
+input {
+  display: block;
+  width: 100%;
+  height: 2.5rem;
+  margin: 20px 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  transition: all .25s ease-in-out;
+  padding: 5px; }
+  input:focus {
+    outline: 0;
+    border-color: #00356c;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 53, 108, 0.6); }
+
+.btn {
+  cursor: pointer;
+  background-color: #00356c;
+  color: white; }
+  .btn:hover {
+    background-color: #002850; }
+
+/* ==========================================================================
+   Root
+   ========================================================================== */
 body {
-  background: #eaeae0;
-  color: #00356c; }
+  font-family: Helvetica Neue, Helvetica, Arial;
+  -webkit-font-smoothing: subpixel-antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.4;
+  color: #00356c;
+  background-color: #eaeae0; }
+
+.light-font {
+  font-weight: 300; }
+
+.thin-font {
+  font-weight: 200; }
+
+a {
+  color: #1096e6; }
+
+header {
+  width: 100%;
+  height: auto;
+  border-bottom: 5px solid white;
+  border-top: 5px solid white; }
+  header .logo-wrapper {
+    width: 128px;
+    margin: 0 auto;
+    padding: 20px 0; }
+
+.content-wrapper {
+  border-left: 5px solid white;
+  border-right: 5px solid white;
+  border-bottom: 5px solid white;
+  width: 900px;
+  margin: 0 auto 148px auto;
+  background: #f3f2ea;
+  height: 1000px; }
+
+.row {
+  width: 100%;
+  height: 300px; }
+
+.row > :first-child {
+  overflow: hidden;
+  padding: 0 !important; }
+
+.row.big {
+  height: 350px; }
+
+.block, .block.small, .block.half, .block.half.plus, .block.full {
+  height: 100%;
+  padding: 20px; }
+  .block h1, .block.small h1, .block.half h1, .block.half.plus h1, .block.full h1, .block h2, .block.small h2, .block.half h2, .block.half.plus h2, .block.full h2, .block h3, .block.small h3, .block.half h3, .block.half.plus h3, .block.full h3, .block h5, .block.small h5, .block.half h5, .block.half.plus h5, .block.full h5, .block h6, .block.small h6, .block.half h6, .block.half.plus h6, .block.full h6 {
+    text-align: center; }
+  .block .picture, .block.half.plus .picture {
+    min-width: 100%;
+    height: auto; }
+
+.block.small, .small.block.half.plus {
+  float: left;
+  width: 220px; }
+
+.block.half, .half.block.plus {
+  float: left;
+  width: 445px; }
+
+.block.half.plus {
+  float: left;
+  width: 670px; }
+
+.block.full, .full.block.half.plus {
+  width: 100%; }
+
+.create {
+  background-color: #eaeae0; }
+
+.pink {
+  background-size: 100%;
+  background-image: url("../images/pinkQA.png");
+  background-position: center; }
 
 /*# sourceMappingURL=options.css.map */

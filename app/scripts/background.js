@@ -8,6 +8,6 @@ chrome.browserAction.setBadgeText({text: '0'});
 
 console.log('Event Page for Browser Action');
 
-var testOptions = {
-  color: 'black'
-};
+//var testOptions = {
+//  color: 'black'
+//};

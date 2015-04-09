@@ -10,10 +10,55 @@
         <!-- endbuild -->
     </head>
     <body ng-app="dojjaOptionsApp" ng-csp>
+
+    <header>
+
+      <div class="logo-wrapper">
+        <img src="images/icon-128.png"/>
+      </div>
+
+    </header>
+
+    <div ng-controller="projectsController" class="content-wrapper">
+      <div ng-controller='formController' class="row big clearfix">
+        <div class="block half plus pink">
+
+        </div>
+        <div class="block small create">
+          <h6 class="light-font">Create Project</h6>
+
+          <form ng-submit="addProject(pName, pURL, pImg)">
+            <input ng-model="pName" type="text" placeholder="name"/>
+            <input ng-model="pURL" type="url" placeholder="http://site.com/"/>
+            <input ng-model="pImg" type="url" placeholder="image"/>
+            <input ng-click="addProject(pName, pURL, pImg)" class="btn" type="submit"/>
+          </form>
+        </div>
+      </div>
+
+
+      <div class="row clearfix" ng-repeat="project in projects">
+        <div class="block half ">
+          <img class="picture" ng-src="{{ project.img }}" alt="bg pic"/>
+
+        </div>
+        <div class="block half">
+          <h4>{{ project.name }}</h4>
+          <p>{{ project.url }}</p>
+          <p>{{ project.img }}</p>
+
+        </div>
+      </div>
+
+
+    </div>
+
     <div ng-controller="optionsController">
       <!--<h1> don!!!! {{ message }}</h1>-->
       <!--<h3>{{ data.test }}</h3> yes! {{ data.number }}-->
       <!--<p>{{ testInput }}<input type="text" ng-model="testInput"/></p>-->
+
+
     </div>
 
                 

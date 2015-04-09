@@ -1,0 +1,153 @@
+/* 
+   *   CSS using SCSS
+     * Created By: Don Page on 4/7/15
+   *   @DonRPage
+ *      
+*/
+
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+@import '_vars.scss';
+
+*,
+*:before,
+*:after {
+  margin:0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+/*  ====================================================================
+    Headings
+    ==================================================================== */
+/* Spacing
+------------------------------------*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  //  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+/* Sizes
+------------------------------------*/
+h1 {
+  font-size: 32px;
+  font-size: 3.2rem;
+}
+
+h2 {
+  font-size: 28px;
+  font-size: 2.8rem;
+}
+
+h3 {
+  font-size: 24px;
+  font-size: 2.4rem;
+}
+
+h4 {
+  font-size: 21px;
+  font-size: 2.1rem;
+}
+
+h5 {
+  font-size: 18px;
+  font-size: 1.8rem;
+}
+
+h6 {
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+
+/* ==========================================================================
+   Form
+   ========================================================================== */
+form{
+  width: 100%;
+}
+input{
+  display: block;
+  width: 100%;
+  height: 2.5rem;
+  margin: 20px 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  transition: all .25s ease-in-out;
+  padding: 5px;
+  &:focus{
+    outline: 0;
+    border-color: $color-primary;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(0, 53, 108, 0.6);
+  }
+}
+
+.btn{
+  cursor: pointer;
+  background-color: $color-primary;
+  color: white;
+  &:hover{
+    background-color: #002850;
+  }
+}
+
+
+/* ==========================================================================
+   Root
+   ========================================================================== */
+
+body{
+  font-family: Helvetica Neue, Helvetica, Arial;
+  -webkit-font-smoothing: subpixel-antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.4;
+  color: $color-primary;
+  background-color: $bg-primary-dark;
+}
+
+.light-font{
+  font-weight: 300;
+}
+
+.thin-font{
+  font-weight: 200;
+}
+
+a{
+  color: $color-secondary;
+}
+
+
+
+
+ 
+ 

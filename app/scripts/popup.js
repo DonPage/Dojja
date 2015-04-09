@@ -10,7 +10,7 @@ angular.module('dojjaPopupApp', ['firebase'])
 
     $scope.message = 'DOJJA BRAH';
 
-    $scope.testInput = testOptions.color;
+    $scope.testInput = 'something';
 
 
 
