@@ -40,11 +40,14 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
         lastUpdated: Firebase.ServerValue.TIMESTAMP,
         assigned: 'nobody'
       });
-
-
-
-
     };
+
+    $scope.editIndex = null;
+
+    $scope.editPage = function (idx) {
+      console.log('edit page:', idx);
+      $scope.editIndex = idx;
+    }
 
   })
 
