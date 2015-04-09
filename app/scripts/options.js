@@ -19,7 +19,7 @@ angular.module('dojjaOptionsApp', ['firebase'])
 
   })
 
-  .controller('projectsController', function ($scope, $firebaseObject){
+  .controller('projectsController', function ($scope, $firebaseObject, Firebase){
 
     var ref = new Firebase('https://dojja.firebaseio.com/projects');
 
@@ -28,6 +28,18 @@ angular.module('dojjaOptionsApp', ['firebase'])
     console.log('obj:', syncObj);
 
     syncObj.$bindTo($scope, 'projects');
+
+
+    $scope.addNewPage = function (p) {
+      console.log("index:", p);
+      ref.child(p).child('pages').push({
+        name: 'new page',
+        created: Firebase.ServerValue.TIMESTAMP,
+        assigned: 'nobody'
+      })
+
+
+    };
 
   })
 

@@ -37,15 +37,14 @@
       </div>
 
 
-      <div class="row clearfix" ng-repeat="project in projects">
+      <div class="row clearfix" ng-repeat="project in projects track by $index">
         <div class="block half ">
           <img class="picture" ng-src="{{ project.img }}" alt="bg pic"/>
 
         </div>
         <div class="block half">
-          <h4>{{ project.name }}</h4>
-          <p>{{ project.url }}</p>
-          <p>{{ project.img }}</p>
+          <h4 class="light-font">{{ project.name }} // <a target="_blank" ng-href="{{ project.url }}">link</a></h4>
+          <input ng-click="addNewPage(project.name)" type="button" value="add page" class="btn"/>
 
         </div>
       </div>
