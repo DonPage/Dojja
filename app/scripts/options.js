@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dojjaOptionsApp', ['firebase'])
+angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
 
   .controller('formController', function ($scope, Firebase){
 
@@ -31,12 +31,17 @@ angular.module('dojjaOptionsApp', ['firebase'])
 
 
     $scope.addNewPage = function (p) {
-      console.log("index:", p);
+      //When addNewPage is clicked it passes the project name as argument.
+      //Argument 'p' is then used to target the correct project pages.
       ref.child(p).child('pages').push({
-        name: 'new page',
+        name: 'Untitled Page',
+        href: '/404',
         created: Firebase.ServerValue.TIMESTAMP,
+        lastUpdated: Firebase.ServerValue.TIMESTAMP,
         assigned: 'nobody'
-      })
+      });
+
+
 
 
     };

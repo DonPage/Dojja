@@ -45,6 +45,14 @@
         <div class="block half">
           <h4 class="light-font">{{ project.name }} // <a target="_blank" ng-href="{{ project.url }}">link</a></h4>
           <input ng-click="addNewPage(project.name)" type="button" value="add page" class="btn"/>
+          <div class="pages-wrapper">
+            <div ng-repeat="page in project.pages" class="page">
+              <p><b>Page name:</b> {{ page.name }}</p>
+              <p><b>Assigned:</b> {{ page.assigned }}</p>
+
+              <div class="time">created <span am-time-ago="page.created"></span></div>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -66,6 +74,8 @@
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/firebase/firebase.js"></script>
         <script src="bower_components/angularfire/dist/angularfire.js"></script>
+        <script src="bower_components/moment/moment.js"></script>
+        <script src="bower_components/angular-moment/angular-moment.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
