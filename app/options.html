@@ -49,7 +49,7 @@
           <div  class="pages-wrapper">
             <div ng-switch on="(editIndex == $index)" ng-repeat="page in project.pages track by $index" class="page clearfix">
               <div ng-switch-default class="default">
-                <input ng-click="editPage($index, project.name)" type="button" class="edit btn" value="edit"/>
+                <input ng-click="editPage($index, project.name, page._parent)" type="button" class="edit btn" value="edit"/>
                 <p><b>Page name:</b> {{ page.name }} </p>
                 <p><b>Assigned:</b> {{ page.assigned }}</p>
 
@@ -58,8 +58,8 @@
               <div ng-switch-when="true" class="edit">
                 <input type="button" class="save btn" value="save"/>
                 <input ng-click="cancelEdit()" type="button" class="cancel btn" value="x"/>
-                <input type="text" value="{{ page.name }}"/>
-                <input type="text" value="{{ page.assigned }}"/>
+                <input type="text" value="{{ shadowPage.name }}"/>
+                <input type="text" value="{{ shadowPage.assigned }}"/>
               </div>
             </div>
           </div>
