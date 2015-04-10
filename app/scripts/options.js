@@ -19,7 +19,7 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
 
   })
 
-  .controller('projectsController', function ($scope, $firebaseObject, Firebase){
+  .controller('projectsController', function ($scope, $firebaseObject, Firebase, $firebaseArray){
 
     var ref = new Firebase('https://dojja.firebaseio.com/projects');
 
@@ -33,21 +33,39 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
     $scope.addNewPage = function (p) {
       //When addNewPage is clicked it passes the project name as argument.
       //Argument 'p' is then used to target the correct project pages.
-      ref.child(p).child('pages').push({
-        name: 'Untitled Page',
-        href: '/404',
-        created: Firebase.ServerValue.TIMESTAMP,
-        lastUpdated: Firebase.ServerValue.TIMESTAMP,
-        assigned: 'nobody'
-      });
+      var newPageRef = ref.child(p).child('pages').push();
+          newPageRef.set({
+            _parent: newPageRef.toString().substr(newPageRef.toString().lastIndexOf('/') + 1),
+            name: 'Untitled Page',
+            href: '/404',
+            created: Firebase.ServerValue.TIMESTAMP,
+            lastUpdated: Firebase.ServerValue.TIMESTAMP,
+            assigned: 'nobody'
+          })
     };
 
     $scope.editIndex = null;
+    $scope.shadowProject = '';
 
-    $scope.editPage = function (idx) {
-      console.log('edit page:', idx);
+    $scope.editPage = function (idx, project) {
+      var pagesArray = $firebaseArray(ref.child(project).child('pages'));
+
+
+
+      console.log('edit page:', idx, 'pagesarray:', pagesArray);
+
       $scope.editIndex = idx;
-    }
+
+      //$scope.shadowProject = angular.copy($scope.page)
+    };
+
+    $scope.cancelEdit = function () {
+      console.log("cancelEdit()");
+      $scope.editIndex = null;
+    };
+
+
+
 
   })
 

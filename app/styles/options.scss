@@ -95,7 +95,46 @@ header{
 }
 
 
+.page{
+  padding: 5px;
+  border: 1px solid $color-primary;
+  height: auto;
+  //transition: all 1s ease;
 
+
+  .edit{
+    input{
+      height: 20px;
+    }
+  }
+}
+
+.tool-btn{
+  float: right;
+  top: -20px;
+  font-size: 10px;
+  position: relative;
+}
+
+.edit.btn{
+  background: transparent;
+  color: $color-secondary;
+  margin: 0;
+}
+
+.cancel.btn{
+  @extend .tool-btn;
+  line-height: .5;
+  border-radius: 5px;
+  width: 40px;
+}
+
+.save.btn{
+  @extend .tool-btn;
+  line-height: .5;
+  border-radius: 5px;
+  width: 50px;
+}
 
  
  

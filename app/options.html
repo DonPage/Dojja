@@ -45,16 +45,21 @@
         <div class="block half">
           <h4 class="light-font">{{ project.name }} // <a target="_blank" ng-href="{{ project.url }}">link</a></h4>
           <input ng-click="addNewPage(project.name)" type="button" value="add page" class="btn"/>
+          <!--<input type="search" ng-model="pageSearchQ"/>-->
           <div  class="pages-wrapper">
-            <div ng-switch on="(editIndex == $index)" ng-repeat="page in project.pages track by $index" class="page">
+            <div ng-switch on="(editIndex == $index)" ng-repeat="page in project.pages track by $index" class="page clearfix">
               <div ng-switch-default class="default">
-                <p><b>Page name:</b> {{ page.name }} <button ng-click="editPage($index)" class="edit-btn">edit</button></p>
+                <input ng-click="editPage($index, project.name)" type="button" class="edit btn" value="edit"/>
+                <p><b>Page name:</b> {{ page.name }} </p>
                 <p><b>Assigned:</b> {{ page.assigned }}</p>
 
-                <div class="time">created <span am-time-ago="page.created"></span></div>
+                <div class="time"> <b>created</b> <span am-time-ago="page.created"></span></div>
               </div>
               <div ng-switch-when="true" class="edit">
-                <h1>EDITING</h1>
+                <input type="button" class="save btn" value="save"/>
+                <input ng-click="cancelEdit()" type="button" class="cancel btn" value="x"/>
+                <input type="text" value="{{ page.name }}"/>
+                <input type="text" value="{{ page.assigned }}"/>
               </div>
             </div>
           </div>

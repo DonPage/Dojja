@@ -193,4 +193,32 @@ header {
   background-image: url("../images/pinkQA.png");
   background-position: center; }
 
+.page {
+  padding: 5px;
+  border: 1px solid #00356c;
+  height: auto; }
+  .page .edit input {
+    height: 20px; }
+
+.tool-btn, .cancel.btn, .save.btn {
+  float: right;
+  top: -20px;
+  font-size: 10px;
+  position: relative; }
+
+.edit.btn {
+  background: transparent;
+  color: #1096e6;
+  margin: 0; }
+
+.cancel.btn {
+  line-height: .5;
+  border-radius: 5px;
+  width: 40px; }
+
+.save.btn {
+  line-height: .5;
+  border-radius: 5px;
+  width: 50px; }
+
 /*# sourceMappingURL=options.css.map */
