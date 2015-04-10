@@ -48,7 +48,9 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
 
     //shadow will act like angular copy. It will just hold the edits
     //but won't sync with the actual object since the user can cancel edits.
+
     $scope.shadowPage = '';
+
 
     $scope.editPage = function (idx, project, pId) {
       console.log(idx, project, pId);
@@ -59,6 +61,9 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
       pagesRef.once('value', function (snap) {
         console.log("snap:", snap.val());
         $scope.shadowPage = snap.val();
+
+        $scope.saveName = $scope.shadowPage.name;
+        $scope.saveAssigned = $scope.shadowPage.assigned;
       });
 
 
@@ -70,6 +75,16 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
 
     $scope.cancelEdit = function () {
       console.log("cancelEdit()");
+      $scope.editIndex = null;
+    };
+
+    $scope.saveEdits = function (name, pId, sName, sAssigned) {
+      console.log(name, pId);
+      var pageRef = ref.child(name).child('pages').child(pId);
+      pageRef.update({
+        assigned: sAssigned,
+        name: sName
+      });
       $scope.editIndex = null;
     };
 

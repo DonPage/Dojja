@@ -26,8 +26,8 @@
           <file leaf-file-name="options.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/options.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.69526625">
-                  <caret line="61" column="70" selection-start-line="61" selection-start-column="70" selection-end-line="61" selection-end-column="70" />
+                <state vertical-scroll-proportion="0.6213018">
+                  <caret line="60" column="86" selection-start-line="60" selection-start-column="86" selection-end-line="60" selection-end-column="86" />
                   <folding />
                 </state>
               </provider>
@@ -70,8 +70,8 @@
           <file leaf-file-name="options.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/scripts/options.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.6242775">
-                  <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+                <state vertical-scroll-proportion="0.56647396">
+                  <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
                   <folding />
                 </state>
               </provider>
@@ -107,8 +107,8 @@
         <option value="$PROJECT_DIR$/app/styles/_defaults.scss" />
         <option value="$PROJECT_DIR$/app/scripts/background.js" />
         <option value="$PROJECT_DIR$/app/styles/options.scss" />
-        <option value="$PROJECT_DIR$/app/scripts/options.js" />
         <option value="$PROJECT_DIR$/app/options.html" />
+        <option value="$PROJECT_DIR$/app/scripts/options.js" />
       </list>
     </option>
   </component>
@@ -906,18 +906,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/options.js">
+    <entry file="file://$PROJECT_DIR$/app/options.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6242775">
-          <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.6213018">
+          <caret line="60" column="86" selection-start-line="60" selection-start-column="86" selection-end-line="60" selection-end-column="86" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/options.html">
+    <entry file="file://$PROJECT_DIR$/app/scripts/options.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69526625">
-          <caret line="61" column="70" selection-start-line="61" selection-start-column="70" selection-end-line="61" selection-end-column="70" />
+        <state vertical-scroll-proportion="0.56647396">
+          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
           <folding />
         </state>
       </provider>
