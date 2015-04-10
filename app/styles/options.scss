@@ -24,10 +24,10 @@ header{
   border-left: 5px solid white;
   border-right: 5px solid white;
   border-bottom: 5px solid white;
-  width: 900px;
+  width: 960px;
   margin: 0 auto 148px auto;
   background: $bg-secondary-light;
-  height: 1000px;
+  height: auto;
 }
 
 .row{
@@ -41,8 +41,12 @@ header{
   padding: 0 !important;
 }
 
+.rowProject{
+  min-height: 420px;
+}
+
 .row.big{
-  height: 350px;
+  height: 410px;
 }
 
 .block{
@@ -68,13 +72,13 @@ header{
 .block.half{
   @extend .block;
   float: left;
-  width: 445px;
+  width: 475px;
 }
 
 .block.half.plus{
   @extend .block;
   float: left;
-  width: 670px;
+  width: 730px;
 }
 
 .block.full{
@@ -82,7 +86,9 @@ header{
   width: 100%;
 }
 
-
+.scroll-y{
+  overflow-y: scroll;
+}
 
 .create{
   background-color: $bg-primary-dark;
