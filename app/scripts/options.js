@@ -88,6 +88,13 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
       $scope.editIndex = null;
     };
 
+    //deleting page:
+    $scope.trashPage = function (name, id) {
+      console.log("id:", name, id);
+      ref.child(name).child('pages').child(id).remove();
+
+    }
+
 
 
   })

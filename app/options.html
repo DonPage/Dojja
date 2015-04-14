@@ -50,6 +50,7 @@
             <div ng-switch on="(editIndex == $index)" ng-repeat="page in project.pages track by $index" class="page clearfix">
               <div ng-switch-default class="default">
                 <input ng-click="editPage($index, project.name, page._parent)" type="button" class="edit btn" value="edit"/>
+                <input ng-click="trashPage(project.name, page._parent)" class="trash btn" type="button" value="trash"/>
                 <p><b>Page name:</b> {{ page.name }} </p>
                 <p><b>Assigned:</b> {{ page.assigned }}</p>
 
