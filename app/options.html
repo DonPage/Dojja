@@ -53,14 +53,19 @@
                 <input ng-click="trashPage(project.name, page._parent)" class="trash btn" type="button" value="trash"/>
                 <p><b>Page name:</b> {{ page.name }} </p>
                 <p><b>Assigned:</b> {{ page.assigned }}</p>
+                <p><b>Progress:</b> {{ page.progress }}</p>
 
-                <div class="time"> <b>created</b> <span am-time-ago="page.created"></span></div>
+                <div class="time created">
+                  <b>created</b> <span am-time-ago="page.created"></span>.
+                  <b>latest edit</b> <span am-time-ago="page.lastEdit"></span>
+                </div>
               </div>
               <div ng-switch-when="true" class="edit">
-                <input ng-click="saveEdits(project.name, shadowPage._parent, saveName, saveAssigned)" type="button" class="save btn" value="save"/>
+                <input ng-click="saveEdits(project.name, shadowPage._parent, saveName, saveAssigned, saveHref)" type="button" class="save btn" value="save"/>
                 <input ng-click="cancelEdit()" type="button" class="cancel btn" value="x"/>
                 <input ng-model="saveName" type="text" value="{{ shadowPage.name }}"/>
                 <input ng-model="saveAssigned" type="text" value="{{ shadowPage.assigned }}"/>
+                <input ng-model="saveHref" type="text" value="{{ shadowPage.href }}"/>
               </div>
             </div>
           </div>

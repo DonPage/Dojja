@@ -39,8 +39,9 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
             name: 'Untitled Page',
             href: '/404',
             created: Firebase.ServerValue.TIMESTAMP,
-            lastUpdated: Firebase.ServerValue.TIMESTAMP,
-            assigned: 'nobody'
+            lastEdit: Firebase.ServerValue.TIMESTAMP,
+            assigned: 'nobody',
+            progress: 'unfinished.'
           })
     };
 
@@ -64,6 +65,7 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
 
         $scope.saveName = $scope.shadowPage.name;
         $scope.saveAssigned = $scope.shadowPage.assigned;
+        $scope.saveHref = $scope.shadowPage.href;
       });
 
 
@@ -78,12 +80,14 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
       $scope.editIndex = null;
     };
 
-    $scope.saveEdits = function (name, pId, sName, sAssigned) {
+    $scope.saveEdits = function (name, pId, sName, sAssigned, sHref) {
       console.log(name, pId);
       var pageRef = ref.child(name).child('pages').child(pId);
       pageRef.update({
         assigned: sAssigned,
-        name: sName
+        name: sName,
+        href: sHref,
+        lastEdit: Firebase.ServerValue.TIMESTAMP
       });
       $scope.editIndex = null;
     };
