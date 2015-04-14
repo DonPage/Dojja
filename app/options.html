@@ -40,7 +40,6 @@
       <div class="row rowProject clearfix" ng-repeat="project in projects">
         <div class="block half ">
           <img class="picture" ng-src="{{ project.img }}" alt="bg pic"/>
-
         </div>
         <div class="block half scroll-y">
           <h4 class="light-font">{{ project.name }} // <a target="_blank" ng-href="{{ project.url }}">link</a></h4>
@@ -51,8 +50,10 @@
               <div ng-switch-default class="default">
                 <input ng-click="editPage($index, project.name, page._parent)" type="button" class="edit btn" value="edit"/>
                 <input ng-click="trashPage(project.name, page._parent)" class="trash btn" type="button" value="trash"/>
-                <p><b>Page name:</b> {{ page.name }} </p>
-                <p><b>Assigned:</b> {{ page.assigned }}</p>
+                <input ng-click="setActive(project.name, page._parent)" class="set btn" type="button" value="set"/>
+
+                <p><b>Page name:</b> {{ page.name }} ( {{ page.href }} ) </p>
+                <!--<p><b>Assigned:</b> {{ page.assigned }}</p>-->
                 <p><b>Progress:</b> {{ page.progress }}</p>
 
                 <div class="time created">

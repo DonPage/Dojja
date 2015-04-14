@@ -96,8 +96,21 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
     $scope.trashPage = function (name, id) {
       console.log("id:", name, id);
       ref.child(name).child('pages').child(id).remove();
+    };
 
-    }
+
+    //active page.
+    //setting a page to active will send it to the chrome popup.
+    $scope.setActive = function (name, id) {
+
+      var dojjaPage = {name: name, pageId: id};
+      var stringy = JSON.stringify(dojjaPage);
+      localStorage.setItem('dojjaActive', stringy);
+
+      ref.child(name).child('pages').child(id).update({
+        active: true
+      });
+    };
 
 
 

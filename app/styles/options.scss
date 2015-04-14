@@ -122,11 +122,11 @@ header{
 }
 
 .trash.btn{
-  width: 40%;
+  width: 20%;
   display: inline;
   background: transparent;
   color: $color-secondary;
-  border: 1px solid $color-primary;
+  border: 1px solid $color-secondary;
 }
 
 .edit.btn{
@@ -135,6 +135,14 @@ header{
   background: transparent;
   color: $color-secondary;
   margin: 0;
+}
+
+.set.btn{
+  width: 20%;
+  display: inline;
+  background: transparent;
+  color: $color-secondary;
+  border: 1px solid $color-secondary;
 }
 
 .cancel.btn{
