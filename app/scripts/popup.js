@@ -2,33 +2,31 @@
 
 
 
+
 angular.module('dojjaPopupApp', ['firebase'])
+  .controller('popupController', function ($scope, Firebase, $firebaseObject) {
 
 
 
-  .controller('popupController', function ($scope, $firebaseObject) {
+    var pageInfo = JSON.parse(localStorage.getItem('dojjaActive')) || false;
 
-    $scope.message = 'DOJJA BRAH';
-
-    $scope.testInput = 'something';
-
-
-
-    var ref = new Firebase('https://dojja.firebaseio.com');
+    var ref = new Firebase('https://dojja.firebaseio.com/projects/'+pageInfo.name+'/pages/'+pageInfo.pageId);
 
     var syncObj = $firebaseObject(ref);
 
-    syncObj.$bindTo($scope, 'data');
+    console.log('obj:', syncObj);
 
-    console.log(syncObj.number);
+    syncObj.$bindTo($scope, 'page');
 
+    $scope.saveEdits = function () {
 
-
-    syncObj.$loaded().then(function (data) {
-      console.log(data.number);
-      $scope.data.number ++;
-      console.log(data.number, 'after');
-    });
-
+      console.log(editor.serialize());
+    }
 
   });
+
+var editor = new MediumEditor('.editable', {
+  targetBlank: true
+});
+
+//console.log(editor.serialize());

@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/medium-editor/dist/css/medium-editor.css" />
+        <link rel="stylesheet" href="bower_components/medium-editor/dist/css/themes/default.css" />
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:css styles/main.css -->
@@ -11,11 +13,21 @@
         <!-- endbuild -->
     </head>
     <body ng-app="dojjaPopupApp" ng-csp>
-        <h1>Popup Bro!</h1>
-        <div ng-controller="popupController">
-          <p>{{ data.number }}</p>
-          <input type="text" ng-model="testInput"/>{{ testInput }}
+
+        <div ng-controller="popupController" ng-csp>
+          <header>
+            <h1 class="light-font">{{ page.name }}</h1>
+          </header>
+
+          <div class="editable">
+            <p>something</p>
+          </div>
+
+          <button ng-click="saveEdits()">save</button>
+
         </div>
+
+
 
 
 
@@ -26,13 +38,20 @@
         <script src="bower_components/angularfire/dist/angularfire.js"></script>
         <script src="bower_components/moment/moment.js"></script>
         <script src="bower_components/angular-moment/angular-moment.js"></script>
+        <script src="bower_components/medium-editor/dist/js/medium-editor.js"></script>
         <!-- endbower -->
-        <!-- endbuild
+        <!-- endbuild -->
+
+
 
 
 
         <!-- build:js scripts/popup.js -->
         <script src="scripts/popup.js"></script>
         <!-- endbuild -->
+
+
+
+
     </body>
 </html>
