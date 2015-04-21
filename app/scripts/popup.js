@@ -18,10 +18,12 @@ angular.module('dojjaPopupApp', ['firebase'])
 
     syncObj.$bindTo($scope, 'page');
 
-    syncObj.$loaded().then(function (data) {
-      console.log(data);
-      $scope.editorBind = $sce.trustAsHtml($scope.page['editor']);
+    syncObj.$loaded().then(function (data) { //Load data from firebase.
+      $scope.editorBind = $sce.trustAsHtml($scope.page['editor']); //Bind editor parsed stringy to DOM.
+
+
     });
+
 
     //$scope.editorBind = $sce.trustAsHtml($scope.page['editor']);
 
@@ -34,7 +36,6 @@ angular.module('dojjaPopupApp', ['firebase'])
         editor: editor.serialize()['element-0'].value
       });
 
-      console.log(JSON.parse(editor.serialize()['element-0'].value));
 
     }
   });
