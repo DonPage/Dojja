@@ -20,9 +20,11 @@ angular.module('dojjaPopupApp', ['firebase'])
 
     $scope.saveEdits = function () {
 
-      console.log(editor.serialize());
-    }
+      console.log("editor:", editor.serialize());
 
+      ref.update(editor.serialize());
+
+    }
   });
 
 var editor = new MediumEditor('.editable', {
