@@ -19,8 +19,8 @@
             <h1 class="light-font">{{ page.name }}</h1>
           </header>
 
-          <div class="editable">
-            <p>something</p>
+          <div class="editable" ng-bind-html="editorBind">
+            soemthing {{ JSON.parse(page.editor) }}
           </div>
 
           <button ng-click="saveEdits()">save</button>
