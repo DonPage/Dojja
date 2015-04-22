@@ -35,7 +35,7 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
       //Argument 'p' is then used to target the correct project pages.
       var newPageRef = ref.child(p).child('pages').push();
           newPageRef.set({
-            _parent: newPageRef.toString().substr(newPageRef.toString().lastIndexOf('/') + 1),
+            parent: newPageRef.toString().substr(newPageRef.toString().lastIndexOf('/') + 1),
             name: 'Untitled Page',
             href: '/404',
             created: Firebase.ServerValue.TIMESTAMP,

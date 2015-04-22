@@ -51,9 +51,9 @@
           <div  class="pages-wrapper">
             <div ng-switch on="(editIndex == $index)" ng-repeat="page in project.pages track by $index" class="page clearfix">
               <div ng-switch-default class="default">
-                <input ng-click="editPage($index, project.name, page._parent)" type="button" class="edit btn" value="edit"/>
-                <input ng-click="trashPage(project.name, page._parent)" class="trash btn" type="button" value="trash"/>
-                <input ng-click="setActive(project.name, page._parent)" class="set btn" type="button" value="set"/>
+                <input ng-click="editPage($index, project.name, page.parent)" type="button" class="edit btn" value="edit"/>
+                <input ng-click="trashPage(project.name, page.parent)" class="trash btn" type="button" value="trash"/>
+                <input ng-click="setActive(project.name, page.parent)" class="set btn" type="button" value="set"/>
 
                 <p><b>Page name:</b> {{ page.name }} ( {{ page.href }} ) </p>
                 <!--<p><b>Assigned:</b> {{ page.assigned }}</p>-->
@@ -65,7 +65,7 @@
                 </div>
               </div>
               <div ng-switch-when="true" class="edit">
-                <input ng-click="saveEdits(project.name, shadowPage._parent, saveName, saveAssigned, saveHref)" type="button" class="save btn" value="save"/>
+                <input ng-click="saveEdits(project.name, shadowPage.parent, saveName, saveAssigned, saveHref)" type="button" class="save btn" value="save"/>
                 <input ng-click="cancelEdit()" type="button" class="cancel btn" value="x"/>
                 <input ng-model="saveName" type="text" value="{{ shadowPage.name }}"/>
                 <input ng-model="saveAssigned" type="text" value="{{ shadowPage.assigned }}"/>

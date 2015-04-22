@@ -8,9 +8,9 @@ angular.module('dojjaPopupApp', ['firebase'])
 
 
 
-    var pageInfo = JSON.parse(localStorage.getItem('dojjaActive')) || false;
+    var pageInfo = JSON.parse(localStorage.getItem('dojjaActive'));
 
-    var ref = new Firebase('https://dojja.firebaseio.com/projects/'+pageInfo.name+'/pages/'+pageInfo.pageId);
+    var ref = new Firebase('https://dojja.firebaseio.com/projects/'+pageInfo.name+'/pages/'+pageInfo.pageId+'/');
 
     var syncObj = $firebaseObject(ref);
 
