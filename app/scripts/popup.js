@@ -44,4 +44,9 @@ var editor = new MediumEditor('.editable', {
   targetBlank: true
 });
 
+chrome.tabs.getSelected(null,function(tab) {
+  var tablink = tab.url;
+  console.log(tablink);
+});
+
 //console.log(editor.serialize());

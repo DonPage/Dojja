@@ -12,7 +12,8 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
         name: name,
         url: url,
         img: img,
-        pages: ' '
+        pages: ' ',
+        features: ' '
       });
 
     };
@@ -30,14 +31,13 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
     syncObj.$bindTo($scope, 'projects');
 
 
-    $scope.addNewPage = function (p) {
-      //When addNewPage is clicked it passes the project name as argument.
+    $scope.addNewFeature = function (p) {
+      //When addNewFeature is clicked it passes the project name as argument.
       //Argument 'p' is then used to target the correct project pages.
-      var newPageRef = ref.child(p).child('pages').push();
+      var newPageRef = ref.child(p).child('features').push();
           newPageRef.set({
             parent: newPageRef.toString().substr(newPageRef.toString().lastIndexOf('/') + 1),
-            name: 'Untitled Page',
-            href: '/404',
+            name: 'Untitled Feature',
             created: Firebase.ServerValue.TIMESTAMP,
             lastEdit: Firebase.ServerValue.TIMESTAMP,
             assigned: 'nobody',
@@ -53,19 +53,19 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
     $scope.shadowPage = '';
 
 
-    $scope.editPage = function (idx, project, pId) {
+    $scope.editFeature = function (idx, project, pId) {
       console.log(idx, project, pId);
-      var pagesRef = ref.child(project).child('pages').child(pId);
+      var featuresRef = ref.child(project).child('features').child(pId);
 
-      console.log(pagesRef);
+      console.log(featuresRef);
 
-      pagesRef.once('value', function (snap) {
+      featuresRef.once('value', function (snap) {
         console.log("snap:", snap.val());
         $scope.shadowPage = snap.val();
 
         $scope.saveName = $scope.shadowPage.name;
         $scope.saveAssigned = $scope.shadowPage.assigned;
-        $scope.saveHref = $scope.shadowPage.href;
+        //$scope.saveHref = $scope.shadowPage.href;
       });
 
 
@@ -82,32 +82,32 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
 
     $scope.saveEdits = function (name, pId, sName, sAssigned, sHref) {
       console.log(name, pId);
-      var pageRef = ref.child(name).child('pages').child(pId);
-      pageRef.update({
+      var featuresRef = ref.child(name).child('features').child(pId);
+      featuresRef.update({
         assigned: sAssigned,
         name: sName,
-        href: sHref,
+        //href: sHref,
         lastEdit: Firebase.ServerValue.TIMESTAMP
       });
       $scope.editIndex = null;
     };
 
     //deleting page:
-    $scope.trashPage = function (name, id) {
+    $scope.trashFeature = function (name, id) {
       console.log("id:", name, id);
-      ref.child(name).child('pages').child(id).remove();
+      ref.child(name).child('features').child(id).remove();
     };
 
 
-    //active page.
-    //setting a page to active will send it to the chrome popup.
+    //active feature.
+    //setting a feature to active will send it to the chrome popup.
     $scope.setActive = function (name, id) {
 
-      var dojjaPage = {name: name, pageId: id};
-      var stringy = JSON.stringify(dojjaPage);
+      var dojjaFeature = {name: name, featId: id};
+      var stringy = JSON.stringify(dojjaFeature);
       localStorage.setItem('dojjaActive', stringy);
 
-      ref.child(name).child('pages').child(id).update({
+      ref.child(name).child('features').child(id).update({
         active: true
       });
 
@@ -143,3 +143,11 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
 
   });
 
+// Called when the user clicks on the browser action.
+chrome.browserAction.onClicked.addListener(function(tab) {
+  // No tabs or host permissions needed!
+  console.log('Turning ' + tab.url + ' red!');
+  chrome.tabs.executeScript({
+    code: 'document.body.style.backgroundColor="red"'
+  });
+});
