@@ -8,9 +8,9 @@ angular.module('dojjaPopupApp', ['firebase'])
 
 
 
-    var pageInfo = JSON.parse(localStorage.getItem('dojjaActive'));
+    var featureInfo = JSON.parse(localStorage.getItem('dojjaActive'));
 
-    var ref = new Firebase('https://dojja.firebaseio.com/projects/'+pageInfo.name+'/pages/'+pageInfo.featId+'/');
+    var ref = new Firebase('https://dojja.firebaseio.com/projects/'+featureInfo.name+'/features/'+featureInfo.featId+'/');
 
     var syncObj = $firebaseObject(ref);
 
@@ -45,8 +45,16 @@ var editor = new MediumEditor('.editable', {
 });
 
 chrome.tabs.getSelected(null,function(tab) {
-  var tablink = tab.url;
-  console.log(tablink);
+  var tabLink = tab.url;
+  console.log(tabLink);
+
+  var baseURL = '^.+?[^\/:](?=[?\/]|$)';//gets base url
+  var path = '[^/]+$';//gets path.
+
+
+  console.log(tabLink.match(baseURL));
+  console.log(tabLink.match(path));
+
 });
 
 //console.log(editor.serialize());

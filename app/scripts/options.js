@@ -4,13 +4,25 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
 
   .controller('formController', function ($scope, Firebase){
 
+    //regex stuff;
+    var baseURL = '^.+?[^\/:](?=[?\/]|$)';//gets base url
+    var path = '[^/]+$';//gets path.
+
     var projectsRef = new Firebase('https://dojja.firebaseio.com/projects');
 
-    $scope.addProject = function (name, url, img) {
+    $scope.addProject = function (url, img) {
       console.log('addProject()', name, url, img);
-      projectsRef.child(name).update({
-        name: name,
-        url: url,
+      //you can't save url's into firebase as a path so we must take away some stuff.
+      var extractBase = url.match(baseURL);
+      var splitCOM = extractBase[0].split('.'); //take away the .com
+      console.log(splitCOM);
+      var splitHTTP = splitCOM[0].split('//');
+      console.log(splitHTTP);
+
+
+      projectsRef.child(splitHTTP[1]).update({
+        name: splitHTTP[1],
+        url: extractBase[0],
         img: img,
         pages: ' ',
         features: ' '
@@ -147,6 +159,7 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
 chrome.browserAction.onClicked.addListener(function(tab) {
   // No tabs or host permissions needed!
   console.log('Turning ' + tab.url + ' red!');
+
   chrome.tabs.executeScript({
     code: 'document.body.style.backgroundColor="red"'
   });

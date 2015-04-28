@@ -30,11 +30,11 @@
         <div class="block small create">
           <h6 class="light-font">Create Project</h6>
 
-          <form ng-submit="addProject(pName, pURL, pImg)">
-            <input ng-model="pName" type="text" placeholder="name"/>
+          <form ng-submit="addProject(pURL, pImg)">
+            <!--<input ng-model="pName" type="text" placeholder="name"/>-->
             <input ng-model="pURL" type="url" placeholder="http://site.com/"/>
             <input ng-model="pImg" type="url" placeholder="image"/>
-            <input ng-click="addProject(pName, pURL, pImg)" class="btn" type="submit"/>
+            <input ng-click="addProject(pURL, pImg)" class="btn" type="submit"/>
           </form>
         </div>
       </div>
@@ -60,8 +60,8 @@
                 <p><b>Progress:</b> {{ feature.progress }}</p>
 
                 <div class="time created">
-                  <b>created</b> <span am-time-ago="page.created"></span>.
-                  <b>latest edit</b> <span am-time-ago="page.lastEdit"></span>
+                  <b>created</b> <span am-time-ago="feature.created"></span>.
+                  <b>latest edit</b> <span am-time-ago="feature.lastEdit"></span>
                 </div>
               </div>
               <div ng-switch-when="true" class="edit">
