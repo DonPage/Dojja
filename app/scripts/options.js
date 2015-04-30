@@ -14,14 +14,14 @@ angular.module('dojjaOptionsApp', ['firebase', 'angularMoment'])
       console.log('addProject()', name, url, img);
       //you can't save url's into firebase as a path so we must take away some stuff.
       var extractBase = url.match(baseURL);
-      var splitCOM = extractBase[0].split('.'); //take away the .com
+      var splitCOM = extractBase[0].replace('.', '-'); //we must replace periods with '-' so it can be saved in database.
       console.log(splitCOM);
-      var splitHTTP = splitCOM[0].split('//');
+      var splitHTTP = splitCOM.replace(/^(https?|ftp):\/\//, '');
       console.log(splitHTTP);
 
 
-      projectsRef.child(splitHTTP[1]).update({
-        name: splitHTTP[1],
+      projectsRef.child(splitHTTP).update({
+        name: splitHTTP,
         url: extractBase[0],
         img: img,
         pages: ' ',
