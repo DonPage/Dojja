@@ -19,7 +19,16 @@
             <h1 class="light-font">{{ feature.name }}</h1>
           </header>
 
-          <div class="editable" ng-bind-html="editorBind" ng-keyup="saveEdits()">
+          <!--//feature edit-->
+          <div class="editable editor" ng-bind-html="editorBind" ng-keyup="saveEdits()">
+
+          </div>
+
+          <header>
+            <h1 class="light-font">{{ tabPath }}</h1>
+          </header>
+          <!--//page edit-->
+          <div class="pageEditable editor" ng-bind-html="pageEditorBind" ng-keyup="savePageEdits()">
 
           </div>
 

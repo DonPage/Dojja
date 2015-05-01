@@ -194,4 +194,8 @@ textarea:focus {
 .wysihtml5-command-active {
   font-weight: bold; }
 
+.editor {
+  height: 85vh;
+  background-color: white; }
+
 /*# sourceMappingURL=popup.css.map */

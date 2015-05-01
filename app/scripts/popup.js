@@ -11,12 +11,14 @@ angular.module('dojjaPopupApp', ['firebase'])
       console.log("url:", url);
       var removeHTTP = url.replace(/^(https?|ftp):\/\//, '');
       console.log(removeHTTP);
-
+      return removeHTTP.replace('.', '-');
     }
 
     /*
-      Page Notes Bindings
+      Page Notes Bindings.
      */
+
+
 
     chrome.tabs.getSelected(null,function(tab) {
       var tabLink = tab.url;
@@ -29,8 +31,28 @@ angular.module('dojjaPopupApp', ['firebase'])
       console.log(tabLink.match(path));
       $scope.tabBase = splitURL(tabLink.match(baseURL)[0]);
       $scope.tabPath = tabLink.match(path)[0] || false;
-      console.log($scope.tabPath, $scope.tabBase);
+      console.log("FINAL: ",$scope.tabPath, $scope.tabBase);
 
+      var pageRef = new Firebase('https://dojja.firebaseio.com/projects/'+$scope.tabBase+'/pages/'+$scope.tabPath+'/');
+
+      var syncPageObj = $firebaseObject(pageRef);
+
+      syncPageObj.$bindTo($scope, 'page');
+
+      syncPageObj.$loaded().then(function(data){
+        $scope.pageEditorBind = $sce.trustAsHtml($scope.page['editor']);
+      });
+
+
+
+      /*
+        Save page edits.
+       */
+      $scope.savePageEdits = function () {
+        pageRef.update({
+          editor: pageEditor.serialize()['element-0'].value
+      })
+      };
 
 
     });
@@ -52,8 +74,6 @@ angular.module('dojjaPopupApp', ['firebase'])
 
     syncObj.$loaded().then(function (data) { //Load data from firebase.
       $scope.editorBind = $sce.trustAsHtml($scope.feature['editor']); //Bind editor parsed stringy to DOM.
-
-
     });
 
 
@@ -63,7 +83,7 @@ angular.module('dojjaPopupApp', ['firebase'])
 
 
     /*
-      Saving edits.
+      Saving edits (for ).
      */
     $scope.saveEdits = function () {
 
@@ -72,13 +92,17 @@ angular.module('dojjaPopupApp', ['firebase'])
       ref.update({
         editor: editor.serialize()['element-0'].value
       });
-
-
     }
   });
 
-var editor = new MediumEditor('.editable', {
+//editor is for feature
+//pageEditor is for page.
+var editor = new MediumEditor('.editable', { //feature notes/editor
   targetBlank: true
+});
+
+var pageEditor = new MediumEditor('.pageEditable', { //page notes/editor
+
 });
 
 
