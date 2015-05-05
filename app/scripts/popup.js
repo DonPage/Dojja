@@ -52,16 +52,9 @@ angular.module('dojjaPopupApp', ['firebase'])
       console.log(tabLink.match(baseURL));
       console.log(tabLink.match(path));
       $scope.tabBase = splitURL(tabLink.match(baseURL)[0]);
-      $scope.tabPath = tabLink.match(path);
+      $scope.tabPath = tabLink.match(path) || 'home';
 
-      console.log("tabPath:", $scope.tabPath);
-      console.log("tabBase:", $scope.tabBase);
-      if ($scope.tabPath === null) {
-        return startPageBindings($scope.tabBase, 'home');
-      } else {
-        return startPageBindings($scope.tabBase, $scope.tabPath);
-      }
-
+      return startPageBindings($scope.tabBase, $scope.tabPath);
 
 
     });
