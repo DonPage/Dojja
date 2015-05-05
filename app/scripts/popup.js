@@ -8,15 +8,37 @@ angular.module('dojjaPopupApp', ['firebase'])
 
     function splitURL(url){
       var httpRegex = '/^(https?|ftp):\/\/(.*)/';
-      console.log("url:", url);
+      console.log("split-url:", url);
       var removeHTTP = url.replace(/^(https?|ftp):\/\//, '');
-      console.log(removeHTTP);
+      console.log("removeHTTP: ",removeHTTP);
+      console.log("replace:", removeHTTP.replace('.', '-'));
       return removeHTTP.replace('.', '-');
     }
 
     /*
       Page Notes Bindings.
      */
+    function startPageBindings(base, path){
+      console.log("PageBindings: ",base, path);
+      var pageRef = new Firebase('https://dojja.firebaseio.com/projects/'+base+'/pages/'+path+'/');
+
+      var syncPageObj = $firebaseObject(pageRef);
+
+      syncPageObj.$bindTo($scope, 'page');
+
+      syncPageObj.$loaded().then(function(data){
+        $scope.pageEditorBind = $sce.trustAsHtml($scope.page['editor']);
+      });
+
+      /*
+       Save page edits.
+       */
+      $scope.savePageEdits = function () {
+        pageRef.update({
+          editor: pageEditor.serialize()['element-0'].value
+        })
+      };
+    }
 
 
 
@@ -30,29 +52,16 @@ angular.module('dojjaPopupApp', ['firebase'])
       console.log(tabLink.match(baseURL));
       console.log(tabLink.match(path));
       $scope.tabBase = splitURL(tabLink.match(baseURL)[0]);
-      $scope.tabPath = tabLink.match(path)[0] || false;
-      console.log("FINAL: ",$scope.tabPath, $scope.tabBase);
+      $scope.tabPath = tabLink.match(path);
 
-      var pageRef = new Firebase('https://dojja.firebaseio.com/projects/'+$scope.tabBase+'/pages/'+$scope.tabPath+'/');
+      console.log("tabPath:", $scope.tabPath);
+      console.log("tabBase:", $scope.tabBase);
+      if ($scope.tabPath === null) {
+        return startPageBindings($scope.tabBase, 'home');
+      } else {
+        return startPageBindings($scope.tabBase, $scope.tabPath);
+      }
 
-      var syncPageObj = $firebaseObject(pageRef);
-
-      syncPageObj.$bindTo($scope, 'page');
-
-      syncPageObj.$loaded().then(function(data){
-        $scope.pageEditorBind = $sce.trustAsHtml($scope.page['editor']);
-      });
-
-
-
-      /*
-        Save page edits.
-       */
-      $scope.savePageEdits = function () {
-        pageRef.update({
-          editor: pageEditor.serialize()['element-0'].value
-      })
-      };
 
 
     });
