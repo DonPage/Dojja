@@ -1,32 +1,30 @@
 'use strict';
 
 
-
-
 angular.module('dojjaPopupApp', ['firebase'])
   .controller('popupController', function ($scope, Firebase, $firebaseObject, $sce) {
 
-    function splitURL(url){
+    function splitURL(url) {
       var httpRegex = '/^(https?|ftp):\/\/(.*)/';
       console.log("split-url:", url);
       var removeHTTP = url.replace(/^(https?|ftp):\/\//, '');
-      console.log("removeHTTP: ",removeHTTP);
+      console.log("removeHTTP: ", removeHTTP);
       console.log("replace:", removeHTTP.replace('.', '-'));
       return removeHTTP.replace('.', '-');
     }
 
     /*
-      Page Notes Bindings.
+     Page Notes Bindings.
      */
-    function startPageBindings(base, path){
-      console.log("PageBindings: ",base, path);
-      var pageRef = new Firebase('https://dojja.firebaseio.com/projects/'+base+'/pages/'+path+'/');
+    function startPageBindings(base, path) {
+      console.log("PageBindings: ", base, path);
+      var pageRef = new Firebase('https://dojja.firebaseio.com/projects/' + base + '/pages/' + path + '/');
 
       var syncPageObj = $firebaseObject(pageRef);
 
       syncPageObj.$bindTo($scope, 'page');
 
-      syncPageObj.$loaded().then(function(data){
+      syncPageObj.$loaded().then(function (data) {
         $scope.pageEditorBind = $sce.trustAsHtml($scope.page['editor']);
       });
 
@@ -41,8 +39,7 @@ angular.module('dojjaPopupApp', ['firebase'])
     }
 
 
-
-    chrome.tabs.getSelected(null,function(tab) {
+    chrome.tabs.getSelected(null, function (tab) {
       var tabLink = tab.url;
 
       var baseURL = '^.+?[^\/:](?=[?\/]|$)';//gets base url
@@ -60,13 +57,12 @@ angular.module('dojjaPopupApp', ['firebase'])
     });
 
 
-
     /*
-      Feature Notes Bindings:
+     Feature Notes Bindings:
      */
     var featureInfo = JSON.parse(localStorage.getItem('dojjaActive'));
 
-    var ref = new Firebase('https://dojja.firebaseio.com/projects/'+featureInfo.name+'/features/'+featureInfo.featId+'/');
+    var ref = new Firebase('https://dojja.firebaseio.com/projects/' + featureInfo.name + '/features/' + featureInfo.featId + '/');
 
     var syncObj = $firebaseObject(ref);
 
@@ -82,10 +78,8 @@ angular.module('dojjaPopupApp', ['firebase'])
     //$scope.editorBind = $sce.trustAsHtml($scope.page['editor']);
 
 
-
-
     /*
-      Saving edits (for ).
+     Saving edits (for ).
      */
     $scope.saveEdits = function () {
 
@@ -100,13 +94,16 @@ angular.module('dojjaPopupApp', ['firebase'])
 //editor is for feature
 //pageEditor is for page.
 var editor = new MediumEditor('.editable', { //feature notes/editor
-  targetBlank: true
+  targetBlank: true,
+  disablePlaceholders: true,
+  buttons: ['bold', 'italic', 'unorderedlist', 'justifyLeft', 'justifyCenter', 'justifyRight']
 });
 
 var pageEditor = new MediumEditor('.pageEditable', { //page notes/editor
-
+  targetBlank: true,
+  disablePlaceholders: true,
+  buttons: ['bold', 'italic', 'unorderedlist', 'justifyLeft', 'justifyCenter', 'justifyRight']
 });
-
 
 
 //console.log(editor.serialize());
