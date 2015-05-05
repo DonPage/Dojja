@@ -1,7 +1,7 @@
 # Dojja | Unfinished.
-*Small project I'm working on.*
 ####Chrome Extension to keep track of QA process.
-
+*Small project I'm working on during my internship with [Purple, Rock, Scissors](http://purplerockscissors.com/).*
+<img align="right" src="app/images/icon-128.png"> 
 ### Deadline: end of May.
 
 ---
