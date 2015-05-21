@@ -19,6 +19,13 @@ angular.module('dojjaPopupApp', ['firebase'])
     function startPageBindings(base, path) {
       console.log("PageBindings: ", base, path);
       var pageRef = new Firebase('https://dojja.firebaseio.com/projects/' + base + '/pages/' + path + '/');
+      var siteRef = new Firebase('https://dojja.firebaseio.com/projects/' + base + '/');
+
+
+      //TODO: maybe check to see if site name is already there instead of updating it every time?
+      siteRef.update({
+        name: base
+      });
 
 
       var syncPageObj = $firebaseObject(pageRef);
