@@ -23,6 +23,8 @@
     </header>
 
     <div ng-controller="projectsController" class="content-wrapper">
+
+
       <div ng-controller='formController' class="row big clearfix">
         <div class="block half plus pink">
 
@@ -42,6 +44,7 @@
 
       <div class="row rowProject clearfix" ng-repeat="project in projects">
         <div class="block half" style="background-color: lightgray">
+          <!--<input ng-show="project.img.length < 1" type="url" placeholder="{{ project.img.length }}"/>-->
           <img class="picture" ng-src="{{ project.img }}" alt="bg pic"/>
         </div>
         <div class="block half scroll-y">
