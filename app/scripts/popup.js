@@ -10,7 +10,7 @@ angular.module('dojjaPopupApp', ['firebase'])
       var removeHTTP = url.replace(/^(https?|ftp):\/\//, '');
       console.log("removeHTTP: ", removeHTTP);
       console.log("replace:", removeHTTP.replace('.', '-'));
-      return removeHTTP.replace('.', '-');
+      return removeHTTP.split('.').join('-');
     }
 
     /*
@@ -19,6 +19,7 @@ angular.module('dojjaPopupApp', ['firebase'])
     function startPageBindings(base, path) {
       console.log("PageBindings: ", base, path);
       var pageRef = new Firebase('https://dojja.firebaseio.com/projects/' + base + '/pages/' + path + '/');
+
 
       var syncPageObj = $firebaseObject(pageRef);
 
