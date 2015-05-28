@@ -196,6 +196,7 @@ textarea:focus {
 
 .editor {
   height: 85vh;
+  overflow-y: scroll;
   background-color: white;
   font-size: 16px; }
   .editor:focus {

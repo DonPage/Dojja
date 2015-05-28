@@ -2,15 +2,20 @@
 
 
 angular.module('dojjaPopupApp', ['firebase'])
-  .controller('popupController', function ($scope, Firebase, $firebaseObject, $sce) {
+  .controller('popupController', function ($scope, Firebase, $firebaseObject, $sce, $location) {
 
     function splitURL(url) {
       var httpRegex = '/^(https?|ftp):\/\/(.*)/';
       console.log("split-url:", url);
       var removeHTTP = url.replace(/^(https?|ftp):\/\//, '');
       console.log("removeHTTP: ", removeHTTP);
-      console.log("replace:", removeHTTP.replace('.', '-'));
+      //console.log("replace:", removeHTTP.replace('.', '-'));
       return removeHTTP.split('.').join('-');
+    }
+
+    function replaceDots(string){
+      //TODO: merge splitURL and replaceDots maybe?
+      return string.split('.').join('-');
     }
 
     /*
@@ -49,17 +54,36 @@ angular.module('dojjaPopupApp', ['firebase'])
 
     chrome.tabs.getSelected(null, function (tab) {
       var tabLink = tab.url;
+      console.log("tabLink:", tabLink);
 
       var baseURL = '^.+?[^\/:](?=[?\/]|$)';//gets base url
       var path = '[^/]+$';//gets path.
 
 
       console.log(tabLink.match(baseURL));
-      console.log(tabLink.match(path));
+      console.log("PATH: ",tabLink.match(path));
       $scope.tabBase = splitURL(tabLink.match(baseURL)[0]);
-      $scope.tabPath = tabLink.match(path) || 'home';
+      //TODO: FIX THIS! CHEA CHEA. If a URL ends with a '/', it will automatically set it to home.
+      //$scope.tabPath = tabLink.match(path) || 'home';
+      //return startPageBindings($scope.tabBase, $scope.tabPath);
 
-      return startPageBindings($scope.tabBase, $scope.tabPath);
+
+      $scope.tabPath = tabLink.split('/');
+
+      for (var i = 0; i < $scope.tabPath.length; i++) {
+        if ($scope.tabPath[i] === 'http:' || $scope.tabPath[i] === '' || $scope.tabPath[i] === 'https:' || $scope.tabPath[i] === ' ') {
+          $scope.tabPath.splice(i, 1);
+        }
+
+        console.log("TABPATH:", $scope.tabPath);
+
+      }
+
+      $scope.activeTabPath = $scope.tabPath[$scope.tabPath.length - 1];
+      //just going to return the last slug.
+      return startPageBindings($scope.tabBase, replaceDots($scope.tabPath[$scope.tabPath.length - 1]));
+
+
 
 
     });
